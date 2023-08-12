@@ -1,0 +1,12 @@
+12/08 - Arrays - 1D
+
+1. Write a C program to find the sum of all elements in an integer array.
+2. Create a program to calculate the average of elements in a floating-point array.
+3. Implement a function to find the maximum element in an array of integers.
+4. Develop a C program to reverse the elements of an array in-place.
+5. Write a function to count the occurrences of a specific number in an integer array.
+6. Create a program that checks if an array is sorted in ascending order.
+7. Implement a function that finds the second smallest element in an integer array.
+8. Write a C program to remove all duplicate elements from an integer array.
+9. Create a function to rotate the elements of an array to the left by a given number of positions.
+10. Implement a program that searches for a specific element in an array and returns its index, or -1 if not found.
