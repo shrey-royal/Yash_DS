@@ -1,12 +1,105 @@
 12/08 - Arrays - 1D
 
+Basic Exercises:
+
 1. Write a C program to find the sum of all elements in an integer array.
+   - Input: [3, 7, 2, 8]
+   - Output: Sum = 20
+
 2. Create a program to calculate the average of elements in a floating-point array.
+   - Input: [2.5, 4.0, 1.5, 3.0]
+   - Output: Average = 2.75
+
 3. Implement a function to find the maximum element in an array of integers.
+   - Input: [10, 45, 27, 18, 32]
+   - Output: Max = 45
+
 4. Develop a C program to reverse the elements of an array in-place.
+   - Input: [5, 8, 12, 3, 9]
+   - Output: [9, 3, 12, 8, 5]
+
 5. Write a function to count the occurrences of a specific number in an integer array.
+   - Input: Array [4, 2, 6, 2, 8, 2, 9], Number 2
+   - Output: Occurrences = 3
+
 6. Create a program that checks if an array is sorted in ascending order.
+   - Input: [1, 4, 5, 7, 9]
+   - Output: Sorted
+
 7. Implement a function that finds the second smallest element in an integer array.
+   - Input: [8, 4, 6, 1, 9, 2]
+   - Output: Second Smallest = 2
+
 8. Write a C program to remove all duplicate elements from an integer array.
+   - Input: [3, 5, 2, 3, 8, 2, 5, 9]
+   - Output: [3, 5, 2, 8, 9]
+
 9. Create a function to rotate the elements of an array to the left by a given number of positions.
+   - Input: Array [1, 2, 3, 4, 5], Positions 2
+   - Output: [3, 4, 5, 1, 2]
+
 10. Implement a program that searches for a specific element in an array and returns its index, or -1 if not found.
+    - Input: Array [6, 8, 12, 5, 9], Element 12
+    - Output: Index = 2
+
+Medium Exercises:
+
+1. Find all triplets with zero sum
+   - Input: [-1, 0, 1, 2, -1, -4]
+   - Output: [[-1, -1, 2], [-1, 0, 1]]
+
+2. Find the element before which all the elements are smaller than it, and after which all are greater
+   - Input: [5, 1, 4, 3, 6, 8, 10, 7, 9]
+   - Output: Element = 6
+
+3. Find the largest pair sum in an unsorted array
+   - Input: [12, 34, 10, 6, 40]
+   - Output: Largest Pair Sum = 74
+
+4. K’th Smallest/Largest Element in Unsorted Array
+   - Input: [7, 10, 4, 3, 20, 15], K = 3
+   - Output: 3rd Smallest = 7
+
+5. Search an element in a sorted and rotated array
+   - Input: [30, 40, 50, 10, 20], Element 10
+   - Output: Index = 3
+
+6. Find the minimum element in a sorted and rotated array
+   - Input: [5, 6, 7, 8, 9, 10, 1, 2, 3]
+   - Output: Minimum = 1
+
+7. Find a peak element
+   - Input: [10, 20, 15, 5, 23, 90, 67]
+   - Output: Peak Element = 20
+
+8. Maximum and minimum of an array using a minimum number of comparisons
+   - Input: [8, 2, 10, 3, 5]
+   - Output: Max = 10, Min = 2
+
+9. Find a Fixed Point in a given array
+   - Input: [-10, -5, 3, 4, 7, 9]
+   - Output: Fixed Point = 3
+
+10. Find the k most frequent words from a file
+    - Input: ["apple", "banana", "apple", "cherry", "banana", "apple"], K = 2
+    - Output: ["apple", "banana"]
+
+11. Find k closest elements to a given value
+    - Input: [10, 15, 7, 3, 20], Value = 17, K = 2
+    - Output: [15, 20]
+
+12. Given a sorted array and a number x, find the pair in the array whose sum is closest to x
+    - Input: [10, 22, 28, 29, 30, 40], X = 54
+    - Output: Pair = (22, 30)
+
+13. Find the closest pair from two sorted arrays
+    - Input: [1, 4, 5, 7], [10, 20, 30, 40]
+    - Output: Closest Pair = (7, 10)
+
+14. Find three closest elements from given three sorted arrays
+    - Input: [1, 4, 10], [2, 15, 20], [10, 12]
+    - Output: Closest Elements = (4, 2, 10)
+
+15. Binary Search for Rational Numbers without using floating point arithmetic
+    - Input: [1/3, 1/2, 2/3, 1, 3/2, 2], Target = 3/2
+    - Output: Index = 4
