@@ -24,8 +24,8 @@ Heap        nlog(n)     nlog(n)     nlog(n)     1           No          Selectio
 void Display(int A[], int n);                       // Display Array
 void swap(int *x, int *y);                          // helper function for Bubble Sort
 void BubbleSort(int A[], int n);                    // Bubble Sort
-// void SelectionSort(int A[], int n);                 // Selection Sort
-// void InsertionSort(int A[], int n);                 // Insertion Sort
+void SelectionSort(int A[], int n);                 // Selection Sort
+void InsertionSort(int A[], int n);                 // Insertion Sort
 // void Merge(int A[], int low, int mid, int high);    // helper function for Merge Sort
 // void MergeSort(int A[], int low, int high);         // Sort Array using Merge Sort
 // int Partition(int A[], int low, int high);          // helper function for Quick Sort
@@ -67,10 +67,10 @@ int main() {
             BubbleSort(A, n);
             break;
         case 2:
-            // SelectionSort(A, n);
+            SelectionSort(A, n);
             break;
         case 3:
-            // InsertionSort(A, n);
+            InsertionSort(A, n);
             break;
         case 4:
             // MergeSort(A, 0, n - 1);
@@ -126,4 +126,35 @@ void BubbleSort(int A[], int n) {
     }
 }
 
-// Selection Sort
+// Selection Sort : In selection sort it takes n-1 passes to sort the array
+void SelectionSort(int A[], int n) {
+    int i, j, k;
+    for(i = 0; i < n - 1; i++) {
+        // j=k=i means we are assuming that the first element is the smallest element
+        for(j = k = i; j < n; j++) {
+            // if we find any element smaller than the assumed smallest element then we will update the value of k
+            if(A[j] < A[k]) {
+                k = j;
+            }
+        }
+        // printf("Pass %d: ", i + 1);
+        // printf("Swapping %d and %d\n", A[i], A[k]);
+        swap(&A[i], &A[k]);
+    }
+}
+
+// Insertion Sort : In insertion sort it takes n-1 passes to sort the array
+void InsertionSort(int A[], int n) {
+    int i, j, x;
+    for(i = 1; i < n; i++) {
+        j = i - 1;
+        x = A[i];
+        // printf("Pass %d: ", i);
+        // Display(A, n);
+        while(j > -1 && A[j] > x) {
+            A[j + 1] = A[j];
+            j--;
+        }
+        A[j + 1] = x;
+    }
+}
