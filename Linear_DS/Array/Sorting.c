@@ -21,18 +21,18 @@ Heap        nlog(n)     nlog(n)     nlog(n)     1           No          Selectio
 #include<stdlib.h>
 
 // Functions Prototype
-void Display(int A[], int n);                       // Display Array
+void display(int A[], int n);                       // display Array
 void swap(int *x, int *y);                          // helper function for Bubble Sort
-void BubbleSort(int A[], int n);                    // Bubble Sort
-void SelectionSort(int A[], int n);                 // Selection Sort
-void InsertionSort(int A[], int n);                 // Insertion Sort
-// void Merge(int A[], int low, int mid, int high);    // helper function for Merge Sort
-// void MergeSort(int A[], int low, int high);         // Sort Array using Merge Sort
-// int Partition(int A[], int low, int high);          // helper function for Quick Sort
-// void QuickSort(int A[], int low, int high);         // Sort Array using Quick Sort
+void bubbleSort(int A[], int n);                    // Bubble Sort
+void selectionSort(int A[], int n);                 // Selection Sort
+void insertionSort(int A[], int n);                 // Insertion Sort
+void merge(int A[], int low, int mid, int high);    // helper function for merge Sort
+void mergeSort(int A[], int low, int high);         // Sort Array using merge Sort
+// int partition(int A[], int low, int high);          // helper function for Quick Sort
+// void quickSort(int A[], int low, int high);         // Sort Array using Quick Sort
 // void swap(int *x, int *y);                          // helper function for Heap Sort
-// void Heapify(int A[], int n, int i);                // helper function for Heap Sort
-// void HeapSort(int A[], int n);                      // Sort Array using Heap Sort
+// void heapify(int A[], int n, int i);                // helper function for Heap Sort
+// void heapSort(int A[], int n);                      // Sort Array using Heap Sort
 
 int main() {
     int *A;                                        // Pointer to Array
@@ -49,13 +49,13 @@ int main() {
     }
 
     printf("Array before Sorting: ");
-    Display(A, n);
+    display(A, n);
 
     printf("Following are the Sorting Techniques:\n");
     printf("1. Bubble Sort\n");
     printf("2. Selection Sort\n");
     printf("3. Insertion Sort\n");
-    printf("4. Merge Sort\n");
+    printf("4. merge Sort\n");
     printf("5. Quick Sort\n");
     printf("6. Heap Sort\n");
     printf("Enter your choice: ");
@@ -64,34 +64,34 @@ int main() {
 
     switch(choice) {
         case 1:
-            BubbleSort(A, n);
+            bubbleSort(A, n);
             break;
         case 2:
-            SelectionSort(A, n);
+            selectionSort(A, n);
             break;
         case 3:
-            InsertionSort(A, n);
+            insertionSort(A, n);
             break;
         case 4:
-            // MergeSort(A, 0, n - 1);
+            mergeSort(A, 0, n - 1);
             break;
         case 5:
-            // QuickSort(A, 0, n - 1);
+            // quickSort(A, 0, n - 1);
             break;
         case 6:
-            // HeapSort(A, n);
+            // heapSort(A, n);
             break;
         default:
             printf("Invalid Choice\n");
     }
 
     printf("Array after Sorting: ");
-    Display(A, n);
+    display(A, n);
     return 0;
 }
 
-// Display Array
-void Display(int A[], int n) {
+// display Array
+void display(int A[], int n) {
     printf("Printing Array: { ");
     for(int i = 0; i < n; i++) {
         printf("%d, ", A[i]);
@@ -107,7 +107,7 @@ void swap(int *x, int *y) {
 }
 
 // Bubble Sort : In bubble generally it takes n-1 passes to sort the array
-void BubbleSort(int A[], int n) {
+void bubbleSort(int A[], int n) {
     int flag;
     for(int i = 0; i < n - 1; i++) {
         flag = 0;
@@ -118,7 +118,7 @@ void BubbleSort(int A[], int n) {
                 swap(&A[j], &A[j + 1]);
                 flag = 1;
             }
-            // Display(A, n);
+            // display(A, n);
         }
         if(flag == 0) {
             break;
@@ -127,7 +127,7 @@ void BubbleSort(int A[], int n) {
 }
 
 // Selection Sort : In selection sort it takes n-1 passes to sort the array
-void SelectionSort(int A[], int n) {
+void selectionSort(int A[], int n) {
     int i, j, k;
     for(i = 0; i < n - 1; i++) {
         // j=k=i means we are assuming that the first element is the smallest element
@@ -144,17 +144,79 @@ void SelectionSort(int A[], int n) {
 }
 
 // Insertion Sort : In insertion sort it takes n-1 passes to sort the array
-void InsertionSort(int A[], int n) {
+void insertionSort(int A[], int n) {
     int i, j, x;
     for(i = 1; i < n; i++) {
         j = i - 1;
         x = A[i];
         // printf("Pass %d: ", i);
-        // Display(A, n);
+        // display(A, n);
         while(j > -1 && A[j] > x) {
             A[j + 1] = A[j];
             j--;
         }
         A[j + 1] = x;
+    }
+}
+
+// helper function for merge Sort
+void merge(int arr[], int l, int m, int r) {
+    int i, j, k;
+    int n1 = m - l + 1;     // size of left subarray
+    int n2 = r - m;         // size of right subarray
+
+    // create temp arrays
+    int L[n1], R[n2];
+
+    // copy data to temp arrays L[] and R[]
+    for(i = 0; i < n1; i++) {
+        L[i] = arr[l + i];
+    }
+    for(j = 0; j < n2; j++) {
+        R[j] = arr[m + 1 + j];
+    }
+
+    // merge the temp arrays back into arr[l..r]
+    i = 0;      // initial index of first subarray
+    j = 0;      // initial index of second subarray
+    k = l;      // initial index of merged subarray
+
+    while(i < n1 && j < n2) {
+        if(L[i] <= R[j]) {
+            arr[k] = L[i];  // if L[i] is smaller than or equal to R[j] then copy L[i] to arr[k]
+            i++;
+        }
+        else {
+            arr[k] = R[j];  // if R[j] is smaller than L[i] then copy R[j] to arr[k]
+            j++;
+        }
+        k++;
+    }
+
+    // copy the remaining elements of L[], if there are any
+    while(i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // copy the remaining elements of R[], if there are any
+    while(j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+// Sort Array using merge Sort
+void mergeSort(int arr[], int l, int r) {
+    if(l < r) {
+        int m = l + (r - l) / 2;
+
+        // sort first and second halves
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+
+        merge(arr, l, m, r);    // merge the sorted halves
     }
 }
