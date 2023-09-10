@@ -28,25 +28,25 @@ void selectionSort(int A[], int n);                 // Selection Sort
 void insertionSort(int A[], int n);                 // Insertion Sort
 void merge(int A[], int low, int mid, int high);    // helper function for merge Sort
 void mergeSort(int A[], int low, int high);         // Sort Array using merge Sort
-// int partition(int A[], int low, int high);          // helper function for Quick Sort
-// void quickSort(int A[], int low, int high);         // Sort Array using Quick Sort
+int partition(int A[], int low, int high);          // helper function for Quick Sort
+void quickSort(int A[], int low, int high);         // Sort Array using Quick Sort
 // void swap(int *x, int *y);                          // helper function for Heap Sort
 // void heapify(int A[], int n, int i);                // helper function for Heap Sort
 // void heapSort(int A[], int n);                      // Sort Array using Heap Sort
 
 int main() {
-    int *A;                                        // Pointer to Array
-    int n;                                         
+    // int *A;                                        // Pointer to Array
+    int n = 7;                                         
+    int A[10] = {8, 7, 5, 4, 3, 2, 1};
+    // printf("Enter the size of Array: ");
+    // scanf("%d", &n);
 
-    printf("Enter the size of Array: ");
-    scanf("%d", &n);
+    // A = (int *)malloc(n * sizeof(int));            // Dynamically Allocate Memory
 
-    A = (int *)malloc(n * sizeof(int));            // Dynamically Allocate Memory
-
-    printf("Generating %d random Elements in the array...\n", n);
-    for(int i = 0; i < n; i++) {
-        A[i] = rand() % 100;                       // Generate Random Numbers
-    }
+    // printf("Generating %d random Elements in the array...\n", n);
+    // for(int i = 0; i < n; i++) {
+    //     A[i] = rand() % 100;                       // Generate Random Numbers
+    // }
 
     printf("Array before Sorting: ");
     display(A, n);
@@ -76,7 +76,7 @@ int main() {
             mergeSort(A, 0, n - 1);
             break;
         case 5:
-            // quickSort(A, 0, n - 1);
+            quickSort(A, 0, n - 1);
             break;
         case 6:
             // heapSort(A, n);
@@ -218,5 +218,36 @@ void mergeSort(int arr[], int l, int r) {
         mergeSort(arr, m + 1, r);
 
         merge(arr, l, m, r);    // merge the sorted halves
+    }
+}
+
+// helper function for Quick Sort
+int partition(int arr[], int low, int high) {
+    int pivot = arr[low + (high - low) / 2];
+    int i = low - 1;
+    int j = high + 1;
+
+    while (1) {
+        do {
+            i++;
+        } while (arr[i] < pivot);
+
+        do {
+            j--;
+        } while (arr[j] > pivot);
+
+        if (i >= j)
+            return j;
+
+        swap(&arr[i], &arr[j]);
+    }
+}
+
+// Sort Array using Quick Sort
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi);
+        quickSort(arr, pi + 1, high);
     }
 }
