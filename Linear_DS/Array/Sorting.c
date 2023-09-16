@@ -22,7 +22,7 @@ Heap        nlog(n)     nlog(n)     nlog(n)     1           No          Selectio
 
 // Functions Prototype
 void display(int A[], int n);                       // display Array
-void swap(int *x, int *y);                          // helper function for Bubble Sort
+void swap(int *x, int *y);                          // helper function for Bubble Sort / Heap Sort
 void bubbleSort(int A[], int n);                    // Bubble Sort
 void selectionSort(int A[], int n);                 // Selection Sort
 void insertionSort(int A[], int n);                 // Insertion Sort
@@ -30,14 +30,13 @@ void merge(int A[], int low, int mid, int high);    // helper function for merge
 void mergeSort(int A[], int low, int high);         // Sort Array using merge Sort
 int partition(int A[], int low, int high);          // helper function for Quick Sort
 void quickSort(int A[], int low, int high);         // Sort Array using Quick Sort
-// void swap(int *x, int *y);                          // helper function for Heap Sort
-// void heapify(int A[], int n, int i);                // helper function for Heap Sort
-// void heapSort(int A[], int n);                      // Sort Array using Heap Sort
+void heapify(int A[], int n, int i);                // helper function for Heap Sort
+void heapSort(int A[], int n);                      // Sort Array using Heap Sort
 
 int main() {
     // int *A;                                        // Pointer to Array
-    int n = 7;                                         
-    int A[10] = {8, 7, 5, 4, 3, 2, 1};
+    int n = 5;                                         
+    int A[5] = {4, 10, 3, 5, 1};
     // printf("Enter the size of Array: ");
     // scanf("%d", &n);
 
@@ -79,7 +78,7 @@ int main() {
             quickSort(A, 0, n - 1);
             break;
         case 6:
-            // heapSort(A, n);
+            heapSort(A, n);
             break;
         default:
             printf("Invalid Choice\n");
@@ -249,5 +248,48 @@ void quickSort(int arr[], int low, int high) {
         int pi = partition(arr, low, high);
         quickSort(arr, low, pi);
         quickSort(arr, pi + 1, high);
+    }
+}
+
+// helper function for Heap Sort
+void heapify(int arr[], int n, int i) {
+    int largest = i;    // Initialize largest as root
+    int left = 2 * i + 1;   // Left Child
+    int right = 2 * i + 2;  // Right Child
+
+    // If left child is larger than root
+    if (left < n && arr[left] > arr[largest]) {
+        largest = left;
+    }
+
+    // If right child is larger than largest so far
+    if (right < n && arr[right] > arr[largest]) {
+        largest = right;
+    }
+
+    // If largest is not the root
+    if (largest != i) {
+        // Swap arr[i] and arr[largest]
+        swap(&arr[i], &arr[largest]);
+
+        // Recursively heapify the affected sub-tree
+        heapify(arr, n, largest);
+    }
+}
+
+//The main function to perform heap sort
+void heapSort(int arr[], int n) {
+    //Build a max heap from the input data
+    for(int i = n/2-1; i>=0; i--) {
+        heapify(arr, n, i);
+    }
+
+    //One by on extract elements from the heap
+    for(int i = n-1; i>0; i--) {
+        //Move current root to end
+        swap(&arr[0], &arr[i]);
+
+        //Call max heapify on the reduced heap
+        heapify(arr, i, 0);
     }
 }
