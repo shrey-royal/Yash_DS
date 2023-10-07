@@ -1,0 +1,15 @@
+> A linked list is a linear data structure in which elements are stored in nodes, and each node points to the next node in the list. It consists of a sequence of nodes, where each node contains data and a reference (or pointer) to the next node in the list.
+
+> Linked lists are dynamic data structures, which means that they can grow or shrink in size during the execution of a program. They are commonly used to implement other data structures such as stacks, queues, and hash tables.
+
+The basic operations that can be performed on a linked list include:
+
+1. Insertion: Adding a new node to the list.
+2. Deletion: Removing a node from the list.
+3. Traversal: Visiting each node in the list.
+4. Searching: Finding a specific node in the list.
+5. Sorting: Rearranging the nodes in the list in a specific order.
+
+> Linked lists can be singly linked, where each node points to the next node in the list, or doubly linked, where each node points to both the next and previous nodes in the list. Singly linked lists are simpler to implement, while doubly linked lists allow for more efficient traversal in both directions.
+
+> Linked lists have some advantages over other data structures such as arrays, including dynamic size, ease of insertion and deletion, and efficient memory usage. However, they also have some disadvantages, such as slower access times and the need for extra memory to store the pointers.
