@@ -42,6 +42,16 @@ void main() {
         switch (choice) {
             case 1:
                 system("cls");  //clrscr();
+                printf("\nEnter the data: ");
+                scanf("%d", &data);
+                insertAtBeginning(&head, data);
+                break;
+
+            case 2:
+                system("cls");  //clrscr();
+                printf("\nEnter the data: ");
+                scanf("%d", &data);
+                insertAtEnd(&head, data);
                 break;
             
             default:
@@ -49,4 +59,28 @@ void main() {
         }
     }
     
+}
+
+void insertAtBeginning(struct Node **head, int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = *head;
+    *head = newNode;
+}
+
+void insertAtEnd(struct Node** head, int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+
+    if(*head == NULL) {
+        *head = newNode;
+        return;
+    }
+
+    struct Node* temp = *head;
+    while(temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
 }
