@@ -66,6 +66,46 @@ void insertAtPosition(struct Node** head, int data, int position) {
     current->next = newNode;
 }
 
+//Function to search a node by value
+int searchByValue(struct Node* head, int key) {
+    struct Node* current = head;
+    int position = 1;
+    while(current != NULL) {
+        if(current->data == key) {
+            return position;
+        }
+        current = current->next;
+        position++;
+    }
+    return -1;
+}
+
+//Function to get the length of the list
+int getLength(struct Node* head) {
+    struct Node* current = head;
+    int length = 0;
+    while(current != NULL) {
+        length++;
+        current = current->next;
+    }
+    return length;
+}
+
+//Function to reverse the list in place
+void reverseList(struct Node** head) {
+    struct Node* prev = NULL;
+    struct Node* current = *head;
+    struct Node* next = NULL;
+
+    while(current != NULL) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    *head = prev;
+}
+
 //Function to print the list in forward direction
 void printList(struct Node* head) {
     struct Node* current = head;
@@ -90,9 +130,9 @@ void main() {
     int choice, data, position, key;
 
     while(1) {
-        system("pause");
         system("cls");
-        printf("\n1. Insertion at the beginning\n");
+        printList(head);
+        printf("\n\n1. Insertion at the beginning\n");
         printf("2. Insertion at the end\n");
         printf("3. Insertion at a given position\n");
         printf("4. Search by Value\n");
@@ -128,15 +168,39 @@ void main() {
                 insertAtPosition(&head, data, position);
                 break;
 
+            case 4:
+                printf("Enter the value to be searched: ");
+                scanf("%d", &key);
+                position = searchByValue(head, key);
+                if(position == -1) {
+                    printf("%d not found!\n", key);
+                }
+                else {
+                    printf("%d found at position %d\n", key, position);
+                }
+                system("pause");
+                break;
+
+            case 5:
+                printf("\nLength of the list: %d\n", getLength(head));
+                system("pause");
+                break;
+
+            case 6:
+                reverseList(&head);
+                break;
+
             case 88:
                 printf("List in forward direction:\n");
                 printList(head);
+                system("pause");
                 break;
 
             case 99:
                 printf("List in reverse direction:\n");
                 printListReverse(head);
                 printf("NULL\n");
+                system("pause");
                 break;
         
             case 0:
